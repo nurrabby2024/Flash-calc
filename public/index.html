@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>FlashCalc</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="FlashCalc" />
+  <meta property="og:description" content="FlashCalc is a minimal tap-first calculator with a clean history of your last results, built to live inside Farcaster Mini Apps." />
+  <meta property="og:image" content="https://flashcalc-miniapp.vercel.app/assets/hero.png" />
+  <meta property="og:url" content="https://flashcalc-miniapp.vercel.app/" />
+  <meta property="og:type" content="website" />
+
+  <!-- Farcaster Mini App embed -->
+  <meta
+    name="fc:miniapp"
+    content='{
+      "version":"1",
+      "imageUrl":"https://flashcalc-miniapp.vercel.app/assets/embed-3x2.png",
+      "button":{
+        "title":"FlashCalc",
+        "action":{
+          "type":"launch_frame",
+          "name":"FlashCalc",
+          "url":"https://flashcalc-miniapp.vercel.app/",
+          "splashImageUrl":"https://flashcalc-miniapp.vercel.app/assets/splash.png",
+          "splashBackgroundColor":"#020617"
+        }
+      }
+    }'
+  />
+
+  <!-- Backward-compatible Frame meta -->
+  <meta
+    name="fc:frame"
+    content='{
+      "version":"1",
+      "imageUrl":"https://flashcalc-miniapp.vercel.app/assets/embed-3x2.png",
+      "button":{
+        "title":"FlashCalc",
+        "action":{
+          "type":"launch_frame",
+          "name":"FlashCalc",
+          "url":"https://flashcalc-miniapp.vercel.app/",
+          "splashImageUrl":"https://flashcalc-miniapp.vercel.app/assets/splash.png",
+          "splashBackgroundColor":"#020617"
+        }
+      }
+    }'
+  />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #020617, #000000 55%, #020617 100%);
+      color: #e5e7eb;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .card {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: 24px;
+      padding: 18px 16px 16px;
+      max-width: 380px;
+      width: 100%;
+      box-shadow: 0 22px 50px rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+    }
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+    }
+    .title {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    .env-pill {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: #9ca3af;
+    }
+    .subtitle {
+      font-size: 0.82rem;
+      color: #9ca3af;
+      margin-bottom: 10px;
+    }
+    .display {
+      background: radial-gradient(circle at top right, #111827, #020617);
+      border-radius: 18px;
+      padding: 10px 12px;
+      margin-bottom: 10px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      min-height: 52px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .expr {
+      font-size: 0.84rem;
+      color: #9ca3af;
+      text-align: right;
+      word-break: break-all;
+    }
+    .result {
+      font-size: 1.35rem;
+      font-weight: 600;
+      text-align: right;
+      margin-top: 2px;
+    }
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 12px;
+      margin-top: 4px;
+    }
+    .key {
+      border-radius: 999px;
+      padding: 10px 0;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+      background: #020617;
+      color: #e5e7eb;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.9);
+      transition: transform 0.08s ease-out, box-shadow 0.08s ease-out, background 0.08s ease-out;
+    }
+    .key[data-kind="op"] {
+      color: #facc15;
+    }
+    .key[data-kind="eq"] {
+      background: linear-gradient(135deg, #22c55e, #0ea5e9);
+      color: #020617;
+      box-shadow: 0 10px 24px rgba(56, 189, 248, 0.6);
+    }
+    .key[data-kind="util"] {
+      color: #f97316;
+    }
+    .key:active {
+      transform: translateY(1px) scale(0.98);
+      box-shadow: none;
+    }
+    .history-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #6b7280;
+      margin-bottom: 4px;
+    }
+    .history {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      max-height: 72px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+    .history-item {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .history-item span.expr-small {
+      opacity: 0.8;
+      max-width: 70%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .history-item span.res-small {
+      font-weight: 500;
+      color: #e5e7eb;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="header-row">
+      <div class="title">FlashCalc</div>
+      <div class="env-pill" id="env-label">web</div>
+    </div>
+    <div class="subtitle">A tiny, fast calculator in one tap.</div>
+
+    <section class="display">
+      <div class="expr" id="expr-display">0</div>
+      <div class="result" id="result-display">0</div>
+    </section>
+
+    <section class="keypad" aria-label="Calculator keys">
+      <button class="key" data-key="C" data-kind="util">C</button>
+      <button class="key" data-key="⌫" data-kind="util">⌫</button>
+      <button class="key" data-key="%" data-kind="op">%</button>
+      <button class="key" data-key="÷" data-kind="op">÷</button>
+
+      <button class="key" data-key="7" data-kind="num">7</button>
+      <button class="key" data-key="8" data-kind="num">8</button>
+      <button class="key" data-key="9" data-kind="num">9</button>
+      <button class="key" data-key="×" data-kind="op">×</button>
+
+      <button class="key" data-key="4" data-kind="num">4</button>
+      <button class="key" data-key="5" data-kind="num">5</button>
+      <button class="key" data-key="6" data-kind="num">6</button>
+      <button class="key" data-key="-" data-kind="op">−</button>
+
+      <button class="key" data-key="1" data-kind="num">1</button>
+      <button class="key" data-key="2" data-kind="num">2</button>
+      <button class="key" data-key="3" data-kind="num">3</button>
+      <button class="key" data-key="+" data-kind="op">+</button>
+
+      <button class="key" data-key="0" data-kind="num">0</button>
+      <button class="key" data-key="." data-kind="num">.</button>
+      <button class="key" data-key="=" data-kind="eq" style="grid-column: span 2;">=</button>
+    </section>
+
+    <div class="history-label">Last results</div>
+    <section class="history" id="history-list"></section>
+  </main>
+
+  <script src="/flashcalc-ui.js"></script>
+  <script type="module" src="/script.js"></script>
+</body>
+</html>
