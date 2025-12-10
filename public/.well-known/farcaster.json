@@ -1,15 +1,15 @@
 {
   "accountAssociation": {
-    "header": "TODO_REPLACE_WITH_BASE64_HEADER",
-    "payload": "TODO_REPLACE_WITH_BASE64_PAYLOAD",
-    "signature": "TODO_REPLACE_WITH_BASE64_SIGNATURE"
+    "header": "eyJmaWQiOi0xLCJ0eXBlIjoiYXV0aCIsImtleSI6IjB4QTFFNzEwMzdFQjBjRTE5MjBDNGMwNGIzZTkxYzYyM0UyMjkxYzUxRSJ9",
+    "payload": "eyJkb21haW4iOiJmbGFzaC1jYWxjLnZlcmNlbC5hcHAifQ",
+    "signature": "AAAAAAAAAAAAAAAAyhG94Fl3s2MRZwKIYr4qFzl2yhEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkSCrVbLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAul7REO_bo9AFv8iC11NYrLu4WEIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVQ_-6NvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABADVUid-jW5raL_IXbP4tWV2MVUFNs6AdADya8tDm_VOejb6DP_15WCzVd2uby1oqaLyJvIVHXmeJM30FMYiSjkQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA-FIQshzFAwL0d7pWaG0gGdybZ63hWwqMROytRWUz0BEOrSzgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4TniipcIG55zWLaDwCIVShVczmVMIALhPH6LXWs9gYIwPXAqiH0GW8PjM3nsdgkK7f1lOjfKDJ5nhoW6WBqg8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAl8ZgIay2xclZzG8RWZzuWvO8j9R0fus3XxDee9lRlVy8dAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACKeyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiNng1YkpXVEMtTVBQcXF1Z0xWd1k5QjVHcjc1NWZlcVk1R2piSG5vUG9UMCIsIm9yaWdpbiI6Imh0dHBzOi8va2V5cy5jb2luYmFzZS5jb20iLCJjcm9zc09yaWdpbiI6ZmFsc2V9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAGSSZJJkkmSSZJJkkmSSZJJkkmSSZJJkkmSSZJJkkmSS"
   },
   "miniapp": {
     "version": "1",
     "name": "FlashCalc",
-    "homeUrl": "https://flashcalc-miniapp.vercel.app/",
-    "iconUrl": "https://flashcalc-miniapp.vercel.app/assets/icon.png",
-    "splashImageUrl": "https://flashcalc-miniapp.vercel.app/assets/splash.png",
+    "homeUrl": "https://flash-calc.vercel.app/",
+    "iconUrl": "https://flash-calc.vercel.app/assets/icon.png",
+    "splashImageUrl": "https://flash-calc.vercel.app/assets/splash.png",
     "splashBackgroundColor": "#020617",
     "subtitle": "A tiny, fast calculator in one tap.",
     "description": "FlashCalc is a minimal tap-first calculator with a clean history of your last results, built to live inside Farcaster Mini Apps.",
@@ -19,13 +19,13 @@
       "math",
       "utility"
     ],
-    "heroImageUrl": "https://flashcalc-miniapp.vercel.app/assets/hero.png",
+    "heroImageUrl": "https://flash-calc.vercel.app/assets/hero.png",
     "tagline": "A tiny, fast calculator in one tap.",
     "ogTitle": "FlashCalc",
     "ogDescription": "FlashCalc is a minimal tap-first calculator with a clean history of your last results, built to live inside Farcaster Mini Apps.",
-    "ogImageUrl": "https://flashcalc-miniapp.vercel.app/assets/hero.png",
+    "ogImageUrl": "https://flash-calc.vercel.app/assets/hero.png",
     "screenshotUrls": [
-      "https://flashcalc-miniapp.vercel.app/assets/screenshot-1.png"
+      "https://flash-calc.vercel.app/assets/screenshot-1.png"
     ],
     "noindex": true
   }
